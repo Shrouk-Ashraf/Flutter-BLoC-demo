@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc_demo/screens/home_screen.dart';
+import 'package:flutter_bloc_demo/screens/characters_screen.dart';
 
 void main() {
   runApp(const RickAndMortyApp());
@@ -13,9 +13,9 @@ class RickAndMortyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        HomeScreen.id: (context) => const HomeScreen(),
+        CharactersScreen.id: (context) => const CharactersScreen(),
       },
-      initialRoute: HomeScreen.id,
+      initialRoute: CharactersScreen.id,
     );
   }
 }

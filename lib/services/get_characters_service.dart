@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
-import 'package:flutter_bloc_demo/models/character.dart';
 
 class GetCharactersService {
   final Dio dio;

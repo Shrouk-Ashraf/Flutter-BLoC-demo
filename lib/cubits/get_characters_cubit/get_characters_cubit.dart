@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc_demo/models/character.dart';
 import 'package:flutter_bloc_demo/repository/get_all_characters_repo.dart';
-import 'package:flutter_bloc_demo/services/get_characters_service.dart';
 import 'package:meta/meta.dart';
 
 part 'get_characters_state.dart';
