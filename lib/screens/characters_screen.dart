@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_demo/cubits/get_characters_cubit/get_characters_cubit.dart';
 
 class CharactersScreen extends StatelessWidget {
@@ -8,14 +9,9 @@ class CharactersScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.red,
-      child: GestureDetector(
-        onTap: () {
-          GetCharactersCubit().getAllCharacters();
-        },
-        child: Text('hhhhh'),
-      ),
+    return BlocProvider(
+      create: (context) => GetCharactersCubit(),
+      child: Scaffold(),
     );
   }
 }
