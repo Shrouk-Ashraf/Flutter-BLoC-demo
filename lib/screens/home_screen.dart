@@ -1,6 +1,4 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc_demo/services/get_characters_service.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
