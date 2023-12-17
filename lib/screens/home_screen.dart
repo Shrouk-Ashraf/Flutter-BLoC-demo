@@ -5,7 +5,7 @@ import 'package:flutter_bloc_demo/services/get_characters_service.dart';
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  static final String id = 'Home Screen';
+  static const String id = 'Home Screen';
 
   @override
   Widget build(BuildContext context) {
