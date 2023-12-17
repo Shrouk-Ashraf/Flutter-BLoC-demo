@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_demo/cubits/get_characters_cubit/get_characters_cubit.dart';
 import 'package:flutter_bloc_demo/screens/characters_screen.dart';
 
 void main() {
@@ -10,12 +12,15 @@ class RickAndMortyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      routes: {
-        CharactersScreen.id: (context) => const CharactersScreen(),
-      },
-      initialRoute: CharactersScreen.id,
+    return BlocProvider(
+      create: (context) => GetCharactersCubit(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        routes: {
+          CharactersScreen.id: (context) => const CharactersScreen(),
+        },
+        initialRoute: CharactersScreen.id,
+      ),
     );
   }
 }

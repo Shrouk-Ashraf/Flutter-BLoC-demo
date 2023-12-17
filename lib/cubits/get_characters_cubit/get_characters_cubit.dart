@@ -9,14 +9,18 @@ part 'get_characters_state.dart';
 class GetCharactersCubit extends Cubit<GetCharactersState> {
   GetCharactersCubit() : super(GetCharactersInitial());
 
-  List<Character>? characters;
+  late List<Character> characters;
 
-  getAllCharacters() async {
+  List<Character> getAllCharacters() {
     try {
-      characters = await GetAllCharactersRepo(dio: Dio()).getAllCharacters();
-      emit(GetCharactersLoaded(characters: characters!));
+      GetAllCharactersRepo(dio: Dio()).getAllCharacters().then((characters) {
+        emit(GetCharactersLoaded(characters: characters));
+        return characters;
+      });
     } catch (e) {
       print("in cubit $e");
     }
+
+    return [];
   }
 }
