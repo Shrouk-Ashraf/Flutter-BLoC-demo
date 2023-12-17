@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc_demo/cubits/get_characters_cubit/get_characters_cubit.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -10,7 +11,9 @@ class HomeScreen extends StatelessWidget {
     return Container(
       color: Colors.red,
       child: GestureDetector(
-        onTap: () {},
+        onTap: () {
+          GetCharactersCubit().getAllCharacters();
+        },
         child: Text('hhhhh'),
       ),
     );
