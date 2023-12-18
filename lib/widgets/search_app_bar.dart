@@ -9,10 +9,6 @@ AppBar searchAppBar({
 }) {
   return AppBar(
     backgroundColor: const Color(0xffffc107),
-    leading: BackButton(
-      color: const Color(0xff343A40),
-      onPressed: backOnPressed,
-    ),
     title: SearchField(
       onChanged: onChanged,
     ),

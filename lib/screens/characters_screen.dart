@@ -52,6 +52,17 @@ class _CharactersScreenState extends State<CharactersScreen> {
                 });
               })
           : RegularAppBar(onPressed: () {
+              //make a back button to another route
+              ModalRoute.of(context)!.addLocalHistoryEntry(
+                LocalHistoryEntry(
+                  onRemove: () {
+                    setState(() {
+                      isSearching = false;
+                      searchedString = null;
+                    });
+                  },
+                ),
+              );
               setState(() {
                 isSearching = true;
               });
