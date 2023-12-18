@@ -23,23 +23,26 @@ class CharacterItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
         ),
         child: GridTile(
-          footer: Container(
-            width: double.infinity,
-            padding: const EdgeInsetsDirectional.symmetric(
-                horizontal: 15, vertical: 10),
-            color: Colors.black54,
-            alignment: Alignment.bottomCenter,
-            child: Text(
-              character.name,
-              style: const TextStyle(
-                height: 1.8,
-                fontSize: 16,
-                color: Color(0xffE1e8eb),
-                fontWeight: FontWeight.bold,
+          footer: Hero(
+            tag: character.id,
+            child: Container(
+              width: double.infinity,
+              padding: const EdgeInsetsDirectional.symmetric(
+                  horizontal: 15, vertical: 10),
+              color: Colors.black54,
+              alignment: Alignment.bottomCenter,
+              child: Text(
+                character.name,
+                style: const TextStyle(
+                  height: 1.8,
+                  fontSize: 16,
+                  color: Color(0xffE1e8eb),
+                  fontWeight: FontWeight.bold,
+                ),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
+                textAlign: TextAlign.center,
               ),
-              overflow: TextOverflow.ellipsis,
-              maxLines: 2,
-              textAlign: TextAlign.center,
             ),
           ),
           child: Container(
