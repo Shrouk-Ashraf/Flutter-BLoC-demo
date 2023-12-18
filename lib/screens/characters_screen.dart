@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_demo/cubits/get_characters_cubit/get_characters_cubit.dart';
-import 'package:flutter_bloc_demo/models/character.dart';
 import 'package:flutter_bloc_demo/widgets/characters_bloc_builder.dart';
 import 'package:flutter_bloc_demo/widgets/regular_app_bar.dart';
 import 'package:flutter_bloc_demo/widgets/search_app_bar.dart';
-import 'package:flutter_bloc_demo/widgets/search_field.dart';
 
 class CharactersScreen extends StatefulWidget {
   const CharactersScreen({super.key});
