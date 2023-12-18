@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc_demo/models/character.dart';
-import 'package:flutter_bloc_demo/screens/details_screen.dart';
+import 'package:flutter_bloc_demo/screens/character_details_screen.dart';
 
 class CharacterItem extends StatelessWidget {
   const CharacterItem({required this.character, super.key});
@@ -11,7 +11,7 @@ class CharacterItem extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return DetailsScreen(character: character);
+          return CharacterDetailsScreen(character: character);
         }));
       },
       child: Container(
