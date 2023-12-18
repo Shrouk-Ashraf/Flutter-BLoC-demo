@@ -37,6 +37,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
               backOnPressed: () {
                 setState(() {
                   isSearching = false;
+                  searchedString = null;
                 });
               },
               closeOnPressed: () {
