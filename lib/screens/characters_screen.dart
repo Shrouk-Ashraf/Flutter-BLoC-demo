@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_demo/cubits/get_characters_cubit/get_characters_cubit.dart';
+import 'package:flutter_bloc_demo/models/character.dart';
 import 'package:flutter_bloc_demo/widgets/characters_bloc_builder.dart';
+import 'package:flutter_bloc_demo/widgets/regular_app_bar.dart';
+import 'package:flutter_bloc_demo/widgets/search_app_bar.dart';
+import 'package:flutter_bloc_demo/widgets/search_field.dart';
 
 class CharactersScreen extends StatefulWidget {
   const CharactersScreen({super.key});
@@ -13,6 +17,9 @@ class CharactersScreen extends StatefulWidget {
 }
 
 class _CharactersScreenState extends State<CharactersScreen> {
+  bool isSearching = false;
+  String? searchedString;
+  TextEditingController controller = TextEditingController();
   @override
   void initState() {
     BlocProvider.of<GetCharactersCubit>(context).getAllCharacters();
@@ -24,14 +31,35 @@ class _CharactersScreenState extends State<CharactersScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xff343A40),
-      appBar: AppBar(
-        backgroundColor: const Color(0xffffc107),
-        title: const Text(
-          'Characters',
-          style: TextStyle(color: Color(0xff343A40)),
-        ),
-      ),
-      body: const CharactersBuilder(),
+      appBar: isSearching
+          ? searchAppBar(
+              controller: controller,
+              backOnPressed: () {
+                setState(() {
+                  isSearching = false;
+                });
+              },
+              closeOnPressed: () {
+                setState(() {
+                  isSearching = false;
+                  searchedString = null;
+                });
+              },
+              onChanged: (searchedString) {
+                setState(() {
+                  this.searchedString = searchedString;
+                });
+              })
+          : RegularAppBar(onPressed: () {
+              setState(() {
+                isSearching = true;
+              });
+            }),
+      body: searchedString == null
+          ? const CharactersBuilder()
+          : CharactersBuilder(
+              searchedString: searchedString,
+            ),
     );
   }
 }

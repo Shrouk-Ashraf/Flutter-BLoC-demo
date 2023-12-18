@@ -4,14 +4,22 @@ import 'package:flutter_bloc_demo/cubits/get_characters_cubit/get_characters_cub
 import 'package:flutter_bloc_demo/widgets/characters_body.dart';
 
 class CharactersBuilder extends StatelessWidget {
-  const CharactersBuilder({super.key});
+  const CharactersBuilder({super.key, this.searchedString});
 
+  final String? searchedString;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GetCharactersCubit, GetCharactersState>(
       builder: (context, state) {
         if (state is GetCharactersLoaded) {
-          return CharactersBody(allCharacters: state.characters);
+          return searchedString == null
+              ? CharactersBody(allCharacters: state.characters)
+              : CharactersBody(
+                  allCharacters: state.characters
+                      .where((character) => character.name
+                          .toLowerCase()
+                          .startsWith(searchedString!.toLowerCase()))
+                      .toList());
         } else {
           return const Center(
               child: CircularProgressIndicator(
