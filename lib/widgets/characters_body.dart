@@ -11,7 +11,7 @@ class CharactersBody extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(children: [
         GridView.builder(
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               childAspectRatio: 2 / 3,
               crossAxisSpacing: 1,
