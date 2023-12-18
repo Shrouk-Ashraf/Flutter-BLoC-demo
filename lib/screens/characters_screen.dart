@@ -18,7 +18,6 @@ class CharactersScreen extends StatefulWidget {
 
 class _CharactersScreenState extends State<CharactersScreen> {
   bool isSearching = false;
-  String? searchedString;
   TextEditingController controller = TextEditingController();
   @override
   void initState() {
@@ -34,21 +33,14 @@ class _CharactersScreenState extends State<CharactersScreen> {
       appBar: isSearching
           ? searchAppBar(
               controller: controller,
-              backOnPressed: () {
-                setState(() {
-                  isSearching = false;
-                  searchedString = null;
-                });
-              },
               closeOnPressed: () {
                 setState(() {
-                  isSearching = false;
-                  searchedString = null;
+                  Navigator.pop(context);
                 });
               },
               onChanged: (searchedString) {
                 setState(() {
-                  this.searchedString = searchedString;
+                  controller.text = searchedString;
                 });
               })
           : RegularAppBar(onPressed: () {
@@ -58,7 +50,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
                   onRemove: () {
                     setState(() {
                       isSearching = false;
-                      searchedString = null;
+                      controller.clear();
                     });
                   },
                 ),
@@ -67,11 +59,9 @@ class _CharactersScreenState extends State<CharactersScreen> {
                 isSearching = true;
               });
             }),
-      body: searchedString == null
-          ? const CharactersBuilder()
-          : CharactersBuilder(
-              searchedString: searchedString,
-            ),
+      body: CharactersBuilder(
+        searchedString: controller.text,
+      ),
     );
   }
 }

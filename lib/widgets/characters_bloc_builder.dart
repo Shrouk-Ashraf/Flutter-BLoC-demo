@@ -12,7 +12,7 @@ class CharactersBuilder extends StatelessWidget {
     return BlocBuilder<GetCharactersCubit, GetCharactersState>(
       builder: (context, state) {
         if (state is GetCharactersLoaded) {
-          return searchedString == null
+          return searchedString!.isEmpty
               ? CharactersBody(allCharacters: state.characters)
               : CharactersBody(
                   allCharacters: state.characters
