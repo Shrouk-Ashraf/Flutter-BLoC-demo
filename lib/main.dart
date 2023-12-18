@@ -15,13 +15,9 @@ class RickAndMortyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => GetCharactersCubit(),
-      child: MaterialApp(
+      child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        routes: {
-          CharactersScreen.id: (context) => const CharactersScreen(),
-          DetailsScreen.id: (context) => const DetailsScreen(),
-        },
-        initialRoute: CharactersScreen.id,
+        home: CharactersScreen(),
       ),
     );
   }

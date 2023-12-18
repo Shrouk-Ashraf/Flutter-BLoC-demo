@@ -10,7 +10,9 @@ class CharacterItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, DetailsScreen.id, arguments: character);
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return DetailsScreen(character: character);
+        }));
       },
       child: Container(
         width: double.infinity,

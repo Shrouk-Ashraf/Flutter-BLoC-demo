@@ -8,8 +8,6 @@ import 'package:flutter_bloc_demo/widgets/search_app_bar.dart';
 class CharactersScreen extends StatefulWidget {
   const CharactersScreen({super.key});
 
-  static const String id = 'Characters Screen';
-
   @override
   State<CharactersScreen> createState() => _CharactersScreenState();
 }
