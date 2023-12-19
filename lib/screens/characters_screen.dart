@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_demo/cubits/get_characters_cubit/get_characters_cubit.dart';
 import 'package:flutter_bloc_demo/widgets/characters_bloc_builder.dart';
+import 'package:flutter_bloc_demo/widgets/no_internet_widget.dart';
 import 'package:flutter_bloc_demo/widgets/regular_app_bar.dart';
 import 'package:flutter_bloc_demo/widgets/search_app_bar.dart';
+import 'package:flutter_offline/flutter_offline.dart';
 
 class CharactersScreen extends StatefulWidget {
   const CharactersScreen({super.key});
@@ -55,8 +57,22 @@ class _CharactersScreenState extends State<CharactersScreen> {
                 isSearching = true;
               });
             }),
-      body: CharactersBuilder(
-        searchedString: controller.text,
+      body: OfflineBuilder(
+        connectivityBuilder: (context, connectivity, child) {
+          final bool connected = connectivity != ConnectivityResult.none;
+          if (connected) {
+            return CharactersBuilder(
+              searchedString: controller.text,
+            );
+          } else {
+            return const NoInternetWidet();
+          }
+        },
+        child: const Center(
+          child: CircularProgressIndicator(
+            color: Color(0xffffc107),
+          ),
+        ),
       ),
     );
   }

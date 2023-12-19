@@ -18,6 +18,7 @@ class CharacterDetailsScreen extends StatelessWidget {
             expandedHeight: 600,
             pinned: true,
             stretch: true,
+            floating: true,
             backgroundColor: const Color(0xff343A40),
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
